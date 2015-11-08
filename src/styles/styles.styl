@@ -1,0 +1,331 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html
+	box-sizing border-box
+
+*
+*:before
+*:after
+	box-sizing inherit
+
+:first-child
+	margin-top 0
+
+:last-child
+	margin-bottom 0
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut{
+  animation-duration: .75s;
+}
+
+@keyframes swing
+
+	20%
+		transform rotate3d(0, 0, 1, 10deg)
+
+	40%
+		transform rotate3d(0, 0, 1, -5deg)
+
+	60%
+		transform rotate3d(0, 0, 1, 3deg)
+
+	80%
+		transform rotate3d(0, 0, 1, -2deg)
+
+	to
+		transform rotate3d(0, 0, 1, 0deg)
+
+@keyframes rotate
+
+	0%
+		transform rotate(0deg)
+
+	to
+		transform rotate(-360deg)
+
+.swing
+	transform-origin top center
+	animation-name swing
+
+html
+	background #ff0000
+	height 100%
+	overflow hidden
+	transition all .2s
+
+	&.settings-visible
+		margin-left -200px
+
+body
+	align-items center
+	color white
+	font-size 20px
+	display flex
+	font-family sans-serif
+	height 100%
+
+
+h1
+	font-family sans-serif
+	text-align center
+	font-size 4em
+	margin 0
+
+	i
+		animation-duration 2s !important
+		transform-origin top center
+
+		&:hover
+			animation-name swing
+
+nav
+	padding 0 .5em
+	position absolute
+	right 1em
+	transition all .2s
+	top 1em
+	z-index 100
+
+	a
+		color white
+		font-size 1.1em
+		text-decoration none
+		transition all .2s
+
+.settings-visible
+
+	nav
+		right calc(600px + 1em)
+
+
+a
+	color inherit
+	text-decoration none
+	transition all .2s
+
+
+form
+	display block
+	flex 1
+	margin auto
+	max-width 600px
+
+fieldset
+	border none
+	padding 0
+
+input
+button
+select
+
+	&:focus
+		outline none
+
+input
+	border none
+	font-size inherit
+	padding .5em
+	width 100%
+
+	&[name="address"]
+		color red
+
+select
+	-webkit-appearance button
+	appearance button
+	background white
+	border-radius 0px
+	color red
+	font-size inherit
+	padding .5em 1em
+	position relative
+	width 100%
+
+option
+	color red
+
+button
+.button
+	background white
+	border none
+	color red
+	cursor pointer
+	font-size inherit
+	display inline-block
+	padding .5em 1em
+	transition all .2s
+
+	&:hover
+		background lighten(red,50)
+
+	&.submitting
+
+		&:before
+			content url('../images/loading.gif')
+			display inline-block
+			margin 0 5px 0 0
+
+.button-secondary
+	background rgba( white, .2)
+	color white
+
+	&:hover
+		background black
+		color white
+
+.submit
+	text-align right
+
+.response
+	border 2px solid white
+	padding .5em
+
+.form-advanced
+	border 1px solid rgba(255,255,255,.3)
+	clear both
+	display none
+	margin 0
+	padding 1em
+	position relative
+
+	&-close
+		position absolute
+		right .5em
+		top .5em
+
+	&-toggle
+		font-size .75em
+		float right
+		padding .5em 0
+		opacity .5
+
+		&:hover
+			opacity 1
+
+.mac-address
+	display flex
+
+	input
+	a
+		flex 1
+
+	a
+		flex 0 0 0%
+		overflow hidden
+		display none
+		margin 0 0 0 1px
+
+	.show-save-button + a
+		flex 0 1 auto
+		display inline-block
+
+.settings
+	background #222
+	bottom 0
+	opacity 0
+	overflow auto
+	padding 2em
+	position fixed
+	right -600px
+	top 0
+	transition right .2s, opacity .2s
+	width 600px
+	z-index 10
+
+	&-title
+		text-align center
+
+	&-visible &
+		box-shadow 0 0 20px 0px rgba(black,.5)
+		right 0px
+		opacity 1
+
+	&-machines
+		text-align left
+
+.machine
+	border-top 1px solid rgba( white, .2)
+
+	&.editing
+		padding 1em 0
+
+	&first-child
+		border 0
+
+	&-name
+	&-address
+		display inline-block
+
+	&-name
+		padding .5em .5em 0
+
+	&-address
+		color rgba( white, .2)
+		font-size .5em
+		padding 0 1em 1em
+
+	a
+		display inline-block
+		float right
+		opacity .2
+		padding .5em
+
+		&:hover
+			opacity .5
+
+	& &-edit-cancel
+		color rgba( white, .2)
+		opacity .5
+
+		&:hover
+			color red
+			opacity 1
+
+	input
+		background rgba(white,.1)
+		border-bottom 1px solid black
+		border-right 1px solid black
+		color white
+
+		&:focus
+			outline none
+
+.text-center
+	text-align center
+
+.footer
+	bottom 0
+	color rgba(white,.5)
+	font-size .75em
+	left 0
+	padding 1em
+	position fixed
+	right 0
+	text-align center
+
+.credits
+	bottom 1em
+	position fixed
+	right 1em
+	z-index 1000
+
+.settings-visible
+
+	.credits
+		right calc(600px + 1em)
+

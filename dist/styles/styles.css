@@ -1,0 +1,381 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+:first-child {
+  margin-top: 0;
+}
+:last-child {
+  margin-bottom: 0;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+}
+.swing {
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  -webkit-animation-name: swing;
+          animation-name: swing;
+}
+html {
+  background: #f00;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+html.settings-visible {
+  margin-left: -200px;
+}
+body {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  font-size: 20px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: sans-serif;
+  height: 100%;
+}
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+h1 i {
+  -webkit-animation-duration: 2s !important;
+          animation-duration: 2s !important;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}
+h1 i:hover {
+  -webkit-animation-name: swing;
+          animation-name: swing;
+}
+nav {
+  padding: 0 0.5em;
+  position: absolute;
+  right: 1em;
+  transition: all 0.2s;
+  top: 1em;
+  z-index: 100;
+}
+nav a {
+  color: #fff;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.settings-visible nav {
+  right: calc(600px + 1em);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+form {
+  display: block;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: auto;
+  max-width: 600px;
+}
+fieldset {
+  border: none;
+  padding: 0;
+}
+input:focus,
+button:focus,
+select:focus {
+  outline: none;
+}
+input {
+  border: none;
+  font-size: inherit;
+  padding: 0.5em;
+  width: 100%;
+}
+input[name="address"] {
+  color: #f00;
+}
+select {
+  -webkit-appearance: button;
+  appearance: button;
+  background: #fff;
+  border-radius: 0px;
+  color: #f00;
+  font-size: inherit;
+  padding: 0.5em 1em;
+  position: relative;
+  width: 100%;
+}
+option {
+  color: #f00;
+}
+button,
+.button {
+  background: #fff;
+  border: none;
+  color: #f00;
+  cursor: pointer;
+  font-size: inherit;
+  display: inline-block;
+  padding: 0.5em 1em;
+  transition: all 0.2s;
+}
+button:hover,
+.button:hover {
+  background: #fff;
+}
+button.submitting:before,
+.button.submitting:before {
+  content: url("../images/loading.gif");
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+.button-secondary {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.button-secondary:hover {
+  background: #000;
+  color: #fff;
+}
+.submit {
+  text-align: right;
+}
+.response {
+  border: 2px solid #fff;
+  padding: 0.5em;
+}
+.form-advanced {
+  border: 1px solid rgba(255,255,255,0.3);
+  clear: both;
+  display: none;
+  margin: 0;
+  padding: 1em;
+  position: relative;
+}
+.form-advanced-close {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+}
+.form-advanced-toggle {
+  font-size: 0.75em;
+  float: right;
+  padding: 0.5em 0;
+  opacity: 0.5;
+}
+.form-advanced-toggle:hover {
+  opacity: 1;
+}
+.mac-address {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mac-address input,
+.mac-address a {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.mac-address a {
+  -webkit-flex: 0 0 0%;
+      -ms-flex: 0 0 0%;
+          flex: 0 0 0%;
+  overflow: hidden;
+  display: none;
+  margin: 0 0 0 1px;
+}
+.mac-address .show-save-button + a {
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  display: inline-block;
+}
+.settings {
+  background: #222;
+  bottom: 0;
+  opacity: 0;
+  overflow: auto;
+  padding: 2em;
+  position: fixed;
+  right: -600px;
+  top: 0;
+  transition: right 0.2s, opacity 0.2s;
+  width: 600px;
+  z-index: 10;
+}
+.settings-title {
+  text-align: center;
+}
+.settings-visible .settings {
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.5);
+  right: 0px;
+  opacity: 1;
+}
+.settings-machines {
+  text-align: left;
+}
+.machine {
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.machine.editing {
+  padding: 1em 0;
+}
+.machinefirst-child {
+  border: 0;
+}
+.machine-name,
+.machine-address {
+  display: inline-block;
+}
+.machine-name {
+  padding: 0.5em 0.5em 0;
+}
+.machine-address {
+  color: rgba(255,255,255,0.2);
+  font-size: 0.5em;
+  padding: 0 1em 1em;
+}
+.machine a {
+  display: inline-block;
+  float: right;
+  opacity: 0.2;
+  padding: 0.5em;
+}
+.machine a:hover {
+  opacity: 0.5;
+}
+.machine .machine-edit-cancel {
+  color: rgba(255,255,255,0.2);
+  opacity: 0.5;
+}
+.machine .machine-edit-cancel:hover {
+  color: #f00;
+  opacity: 1;
+}
+.machine input {
+  background: rgba(255,255,255,0.1);
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  color: #fff;
+}
+.machine input:focus {
+  outline: none;
+}
+.text-center {
+  text-align: center;
+}
+.footer {
+  bottom: 0;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75em;
+  left: 0;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  text-align: center;
+}
+.credits {
+  bottom: 1em;
+  position: fixed;
+  right: 1em;
+  z-index: 1000;
+}
+.settings-visible .credits {
+  right: calc(600px + 1em);
+}
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 10deg);
+            transform: rotate3d(0, 0, 1, 10deg);
+  }
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+            transform: rotate3d(0, 0, 1, -5deg);
+  }
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 3deg);
+            transform: rotate3d(0, 0, 1, 3deg);
+  }
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -2deg);
+            transform: rotate3d(0, 0, 1, -2deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+@keyframes swing {
+  20% {
+    -webkit-transform: rotate3d(0, 0, 1, 10deg);
+            transform: rotate3d(0, 0, 1, 10deg);
+  }
+  40% {
+    -webkit-transform: rotate3d(0, 0, 1, -5deg);
+            transform: rotate3d(0, 0, 1, -5deg);
+  }
+  60% {
+    -webkit-transform: rotate3d(0, 0, 1, 3deg);
+            transform: rotate3d(0, 0, 1, 3deg);
+  }
+  80% {
+    -webkit-transform: rotate3d(0, 0, 1, -2deg);
+            transform: rotate3d(0, 0, 1, -2deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}

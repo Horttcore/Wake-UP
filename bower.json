@@ -1,0 +1,25 @@
+{
+  "name": "wake-up",
+  "version": "0.1.0",
+  "authors": [
+    "Ralf Hortt <me@horttcore.de>"
+  ],
+  "description": "Wake on Lan Client",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "horttcore.de",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "select2": "~4.0.0",
+    "jquery": "~2.1.4",
+    "font-awesome": "~4.4.0"
+  }
+}
