@@ -54,7 +54,7 @@ function loadMachines()
 
 
 /**
- * Load machines from database.csv
+ * Save machines to database.csv
  *
  * @return array Machines
  * @author Ralf Hortt <me@horttcore.de>
@@ -86,7 +86,7 @@ function saveMachines( $machines )
 
 
 /**
- * Load machines from database.csv
+ * Wake machine
  *
  * @return array Machines
  * @author Ralf Hortt <me@horttcore.de>
